@@ -1,0 +1,22 @@
+{
+  "name": "lazyload",
+  "version": "1.0.0",
+  "description": "shoping app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nandha-marimuthu/lazyLoad.git"
+  },
+  "author": "nandha",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nandha-marimuthu/lazyLoad/issues"
+  },
+  "homepage": "https://github.com/nandha-marimuthu/lazyLoad#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
