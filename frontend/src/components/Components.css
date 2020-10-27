@@ -1,0 +1,19 @@
+.product_description {
+  margin: 100px;
+}
+
+.product_description p {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.product_description button {
+  width: 60%;
+  padding: 10px;
+  background-color: rgb(32, 30, 34);
+  color: white;
+}
+
+.product_description h2 {
+  color: red;
+}
