@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../index.css';
 
 function Description({match}) {
  
@@ -32,13 +33,18 @@ function Description({match}) {
     
     return(
       <div className="product_description">
-        <img src={product.image} alt=""/>
+        <div className='zoom'>
+          <img src={product.image} alt=""/>
+        </div>
         <h1>{product.name}</h1>
         <h2>&#x20B9; {product.price}</h2>
-        <p>{product.description}</p>
-        <button onClick={increment}>+</button><br/>
-        <strong>Number of items:</strong> {quantity} <br/>
-        <button onClick={decrement}>-</button>
+        <p>{product.description}</p><br/>
+        <div className='adding'>
+           
+          <button onClick={increment}>increase</button>
+          <button>  items: {quantity} </button>
+          <button onClick={decrement}>decrease</button>
+        </div><br/><br/>
         <h3>Total = &#x20B9; {total}</h3>
         <button disabled={product.countInStock === 0}>
           {product.countInStock ? "Add to Cart" : "Out of Stock"}
