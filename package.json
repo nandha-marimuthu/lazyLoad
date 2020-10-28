@@ -34,5 +34,7 @@
     "mongoose": "^5.10.11",
     "nodemon": "^2.0.6",
     "update-node": "^0.1.0"
+    "nodemon": "^2.0.6",
+    "react-icons": "^3.11.0"
   }
 }
