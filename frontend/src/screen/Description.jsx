@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { listProductDetails } from '../actions/productActions';
 import '../index.css';
 
-function Description({match}) {
+function Description({history, match}) {
  
-  //This part fetches the data from api
+  const dispatch =  useDispatch()
 
-  const [product,setProduct]=useState({})
+  const productDetails = useSelector(state => state.productDetails)
+  const { loading, error, product } = productDetails
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      const {data}=await axios.get(`/api/products/${match.params.id}`)
-      setProduct(data)
-    }
-    fetchProduct()},[match])
+    dispatch(listProductDetails(match.params.id))
+  }, [dispatch, match])
 
   // This is increment and decrement part
 
@@ -29,27 +28,38 @@ function Description({match}) {
     else setQuantity((count) => count - 1)
   }
 
-  const total= quantity*product.price
+  const total= quantity*product.price;
+
+  // This is adding to cart
+
+  const addToCartHandler = () => {
+    history.push(`/cart/${match.params.id}?qty=${quantity}`)
+  }
     
     return(
-      <div className="product_description">
-        <div className='zoom'>
-          <img src={product.image} alt=""/>
-        </div>
-        <h1>{product.name}</h1>
-        <h2>&#x20B9; {product.price}</h2>
-        <p>{product.description}</p><br/>
-        <div className='adding'>
-           
-          <button onClick={increment}>increase</button>
-          <button>  items: {quantity} </button>
-          <button onClick={decrement}>decrease</button>
-        </div><br/><br/>
-        <h3>Total = &#x20B9; {total}</h3>
-        <button disabled={product.countInStock === 0}>
-          {product.countInStock ? "Add to Cart" : "Out of Stock"}
-        </button>
-    </div>
+      <div>
+         { loading ? (<h2>Loading page....</h2>) : error ? (<h3>{error}</h3>) :  
+          (  
+            <div className="product_description">
+              <div className='zoom'>
+                <img src={product.image} alt=""/>
+              </div>
+              <h1>{product.name}</h1>
+              <h2>&#x20B9; {product.price}</h2>
+              <p>{product.description}</p><br/>
+              <div className='adding'>
+                
+                <button onClick={increment}>increase</button>
+                <button>  items: {quantity} </button>
+                <button onClick={decrement}>decrease</button>
+              </div><br/><br/>
+              <h3>Total = &#x20B9; {total}</h3>
+              <button disabled={product.countInStock === 0} onClick={addToCartHandler}>
+                {product.countInStock ? "Add to Cart" : "Out of Stock"}
+              </button>
+            </div>
+          ) } 
+      </div>
           
   );
 }
