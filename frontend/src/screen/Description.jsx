@@ -43,15 +43,15 @@ function Description({history, match}) {
             <div className="product_description">
               <div className='zoom'>
                 <img src={product.image} alt=""/>
-              </div>
+              </div><br/><br/>
               <h1>{product.name}</h1>
               <h2>&#x20B9; {product.price}</h2>
               <p>{product.description}</p><br/>
               <div className='adding'>
                 
-                <button onClick={increment}>increase</button>
-                <button>  items: {quantity} </button>
-                <button onClick={decrement}>decrease</button>
+                <button onClick={increment}>+</button>
+                <button disabled>{quantity} </button>
+                <button onClick={decrement}>-</button>
               </div><br/><br/>
               <h3>Total = &#x20B9; {total}</h3>
               <button disabled={product.countInStock === 0} onClick={addToCartHandler}>

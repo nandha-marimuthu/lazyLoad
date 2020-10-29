@@ -15,22 +15,41 @@ main {
 }
 
 .product_description button {
-  width: 20%;
-  padding: 10px;
-  background-color: rgb(255, 255, 255);
-  color: red;
-  border-color: red;
-  border-radius: 20px;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  /*opacity: 0.6;*/
+  outline: none;
+  color: #fff;
+  background-color: #5f6799;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 5px #999;
+  margin-left: 10px;
 }
 
 .product_description button:hover {
-  border-color: green;
+  background-color: #060b26;
+  /*opacity: 1;*/
+}
+
+.product_description button:active {
+  background-color: #060b26;
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
 }
 
 img {
   justify-content: center;
   width: 300px;
   height: 250px;
+  border-image-width: 10px;
+  border: 2px solid black;
+  margin-top: 0px;
+  margin-left: 380px;
 }
 
 .product_description h2 {
@@ -51,20 +70,32 @@ img {
 /* Add some padding inside the card container */
 
 .product_description .zoom {
-  padding: 20px;
+  padding: 10px;
   align-content: center;
   /*border: solid green;*/
-  border-radius: 20px;
+  border-radius: 10px;
   transition: transform 0.2s; /* Animation */
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+  display: flow-root;
+  position: relative;
+  width: auto;
+  margin-top: 10px;
 }
 
 .product_description .zoom:hover {
-  transform: scale(1.5);
-  border: solid red;
+  transform: scale(1.2);
+
+  /*set the size of the result div:*/
+  width: auto;
+  height: auto;
+  background: linear-gradient(
+    to left,
+    #060b26 25%,
+    #ffcd02 25%,
+    #ffcd02 50%,
+    #e84f47 50%,
+    #e84f47 75%,
+    #060b26 75%
+  );
 }
 
 .hometitle h1 {
@@ -88,5 +119,21 @@ img {
   background-color: #dddddd;
 }
 
-.product_description .adding button {
+@keyframes example {
+  from {
+    background-color: #060b26;
+  }
+  to {
+    background-color: white;
+  }
+}
+
+.home h1 {
+  /*color: #060b26;*/
+  width: 200px;
+  height: 100px;
+  /*animation-name: example;
+  animation-duration: 4s;*/
+  border-radius: 20px;
+  font-family: serif;
 }

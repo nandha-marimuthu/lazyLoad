@@ -18,7 +18,7 @@ const Cart = ({match, location, history}) => {
   }, [dispatch, productId, quantity])
 
   // Quantity changer
-
+ /* 
   const increment = (props) => {
     let qty = props.qtyn
     if (qty + 1 > props.stock) alert('Exceeded stock limit')
@@ -31,7 +31,7 @@ const Cart = ({match, location, history}) => {
     if (qty > props.stock) alert('Order at least one')
     else qty-=1
     dispatch(addItem(productId, qty))
-  }
+  }*/
 
   return(
     <div>
@@ -44,9 +44,9 @@ const Cart = ({match, location, history}) => {
           <div>
             <h1><Link to ={`/product/${item.product}`}>{item.name}</Link></h1>
             <h3>	&#x20B9; {item.price} </h3>
-            <button onClick={increment({stock:item.countInStock, qtyn:item.quantity})}>increase</button>
+            <button /*onClick={increment({stock:item.countInStock, qtyn:item.quantity})}*/>increase</button>
                 <button>  items: {item.quantity} </button>
-                <button onClick={decrement({stock:0, qtyn:item.quantity})}>decrease</button>
+                <button /*onClick={decrement({stock:0, qtyn:item.quantity})}*/>decrease</button>
               <br/><br/>
               <h3>Total = &#x20B9; {item.quantity*item.price}</h3>
           </div>
