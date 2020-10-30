@@ -29,6 +29,7 @@ function Description({history, match}) {
   }
 
   const total= quantity*product.price;
+  const tot=total.toFixed(2)
 
   // This is adding to cart
 
@@ -53,7 +54,7 @@ function Description({history, match}) {
                 <button disabled>{quantity} </button>
                 <button onClick={decrement}>-</button>
               </div><br/><br/>
-              <h3>Total = &#x20B9; {total}</h3>
+              <h3>Total = &#x20B9; {tot}</h3>
               <button disabled={product.countInStock === 0} onClick={addToCartHandler}>
                 {product.countInStock ? "Add to Cart" : "Out of Stock"}
               </button>

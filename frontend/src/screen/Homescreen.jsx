@@ -17,7 +17,8 @@ function Homescreen() {
 
   return (
     <div className='home'>
-      <h1> Vugha's products</h1>(
+      <h1> Vugha's products</h1>
+      { loading ? (<h2>Loading page....</h2>) : error ? (<h3>{error}</h3>) : (
       <Row>
         {products.map((product) => (
           <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
@@ -25,7 +26,7 @@ function Homescreen() {
           </Col>
         ))}
       </Row>
-      )
+      )}
     </div>
   );
 }
