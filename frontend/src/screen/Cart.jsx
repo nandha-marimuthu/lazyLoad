@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import {Link} from 'react-router-dom'
+import React, { useEffect } from 'react';
+import {Link} from 'react-router-dom';
+import { Row, Col, ListGroup, Form, Button} from "react-bootstrap";
 import {useSelector, useDispatch} from 'react-redux';
-import {addItem} from '../actions/cartActions'
+import {addItem, deleteItem} from '../actions/cartActions';
 
 const Cart = ({match, location, history}) => {
 
@@ -17,42 +18,55 @@ const Cart = ({match, location, history}) => {
     }
   }, [dispatch, productId, quantity])
 
-  // Quantity changer
- /* 
-  const increment = (props) => {
-    let qty = props.qtyn
-    if (qty + 1 > props.stock) alert('Exceeded stock limit')
-    else qty+=1
-    dispatch(addItem(productId, qty))
+  const removeFromCartHandler = (id) => {
+    dispatch(deleteItem(id))
   }
-
-  const decrement = (props) => {
-    let qty = props.qtyn
-    if (qty > props.stock) alert('Order at least one')
-    else qty-=1
-    dispatch(addItem(productId, qty))
-  }*/
 
   return(
     <div>
-      <h1> Shopping Cart </h1>
-      {cartItems.length === 0 ? <h3>Your cart is empty<Link to='/'> Go Shopping </Link></h3> 
-      :
-      ( 
-        <div>
-        {cartItems.map(item => (
-          <div>
-            <h1><Link to ={`/product/${item.product}`}>{item.name}</Link></h1>
-            <h3>	&#x20B9; {item.price} </h3>
-            <button /*onClick={increment({stock:item.countInStock, qtyn:item.quantity})}*/>increase</button>
-                <button>  items: {item.quantity} </button>
-                <button /*onClick={decrement({stock:0, qtyn:item.quantity})}*/>decrease</button>
-              <br/><br/>
-              <h3>Total = &#x20B9; {item.quantity*item.price}</h3>
-          </div>
-        ))}
-        </div>
-      )}
+      <Row>
+        <Col md= {8}>
+          <h1>Shopping Cart</h1>
+          {cartItems.length === 0 ? <h3>Your cart is empty<Link to='/'> Go Shopping </Link></h3> 
+          : (
+              <ListGroup variant ='flush'>
+                {cartItems.map( item => (
+                  <ListGroup.Item key={item.product}>
+                    <Row>
+                      <Col md={3}>
+                        <Link to={`/product/${item.product}`}>{item.name}</Link>
+                      </Col>
+                      <Col md={2}>&#x20B9; {item.price} </Col>
+                      <Col md={2}>
+                        <Form.Control
+                              as = 'select'
+                              value={item.quantity}
+                              onChange={(e) => dispatch(addItem(item.product, Number(e.target.value)))}>
+                                {[...Array(item.countInStock).keys()].map((x) => (
+                                  <option key={x+1} value={x+1}>
+                                    {x+1}
+                                  </option>
+                                ))}
+                              </Form.Control>
+                      </Col>
+                      <Col md={2}>
+                        <Button type='button' variant='light' onClick={() => 
+                        removeFromCartHandler(item.product)}>
+                          Delete
+                        </Button>
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                ))}
+              </ListGroup>
+            )}
+        </Col>
+          <ListGroup.Item variant='flush'>
+              <h1>Total: &#x20B9; 
+                {cartItems.reduce((acc, item) => acc + item.quantity*item.price ,0).toFixed(2)}
+              </h1>
+          </ListGroup.Item>
+      </Row>
     </div>
   );
 }

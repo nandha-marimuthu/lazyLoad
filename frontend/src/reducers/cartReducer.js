@@ -23,11 +23,10 @@ export const cartReducer = (state= { cartItems: [] }, action) => {
       
 
       case DELETE_ITEM:
-        let copyState1 = state.slice();
-        let item1 = copyState1.filter((items)=> items.id === action.payload.id)
-        let ind = copyState1.findIndex((item)=> item.id === item1[0].id)
-        let copyState2 = copyState1.splice(ind)
-        return copyState2
+        return{
+          ...state,
+          cartItems: state.cartItems.filter(x => x.product !== action.payload)
+        }
 
     default:
       return state
