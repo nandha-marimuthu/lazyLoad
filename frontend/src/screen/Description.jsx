@@ -29,7 +29,7 @@ function Description({history, match}) {
   }
 
   const total= quantity*product.price;
-  const tot=total.toFixed(2)
+  const tot=total.toFixed(2);
 
   // This is adding to cart
 
