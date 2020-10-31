@@ -7,7 +7,7 @@ main {
 }
 
 .product_description h1 {
-  margin-top: 20px;
+  margin-top: 300px;
 }
 
 .product_description p {
@@ -43,13 +43,11 @@ main {
 }
 
 img {
-  justify-content: center;
-  width: 300px;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
   height: 250px;
-  border-image-width: 10px;
   border: 2px solid black;
-  margin-top: 0px;
-  margin-left: 380px;
 }
 
 .product_description h2 {
@@ -70,14 +68,12 @@ img {
 /* Add some padding inside the card container */
 
 .product_description .zoom {
+  justify-content: center;
   padding: 10px;
-  align-content: center;
-  /*border: solid green;*/
   border-radius: 10px;
   transition: transform 0.2s; /* Animation */
-  display: flow-root;
-  position: relative;
-  width: auto;
+  display: flex;
+  position: absolute;
   margin-top: 10px;
 }
 
@@ -136,4 +132,14 @@ img {
   animation-duration: 4s;*/
   border-radius: 20px;
   font-family: serif;
+}
+
+.total h1 {
+  color: red;
+}
+
+.cart .total {
+  position: absolute;
+  width: 50%;
+  bottom: 100px;
 }

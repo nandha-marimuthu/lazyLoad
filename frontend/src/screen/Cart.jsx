@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import { Row, Col, ListGroup, Form, Button} from "react-bootstrap";
 import {useSelector, useDispatch} from 'react-redux';
 import {addItem, deleteItem} from '../actions/cartActions';
+import '../index.css';
 
 const Cart = ({match, location, history}) => {
 
@@ -23,7 +24,7 @@ const Cart = ({match, location, history}) => {
   }
 
   return(
-    <div>
+    <div className='cart'>
       <Row>
         <Col md= {8}>
           <h1>Shopping Cart</h1>
@@ -50,7 +51,7 @@ const Cart = ({match, location, history}) => {
                               </Form.Control>
                       </Col>
                       <Col md={2}>
-                        <Button type='button' variant='light' onClick={() => 
+                        <Button type='button' variant='dark' onClick={() => 
                         removeFromCartHandler(item.product)}>
                           Delete
                         </Button>
@@ -61,12 +62,12 @@ const Cart = ({match, location, history}) => {
               </ListGroup>
             )}
         </Col>
-          <ListGroup.Item variant='flush'>
-              <h1>Total: &#x20B9; 
-                {cartItems.reduce((acc, item) => acc + item.quantity*item.price ,0).toFixed(2)}
-              </h1>
-          </ListGroup.Item>
       </Row>
+      <div class = 'total'>
+        <h1>Total: &#x20B9; 
+          {cartItems.reduce((acc, item) => acc + item.quantity*item.price ,0).toFixed(2)}
+        </h1>
+      </div>
     </div>
   );
 }

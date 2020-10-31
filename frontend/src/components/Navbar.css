@@ -8,6 +8,11 @@
   align-items: center;
 }
 
+.navbar .redir {
+  color: white;
+  margin-left: 20px;
+}
+
 .menu-bars {
   margin-left: 2rem;
   font-size: 2rem;
