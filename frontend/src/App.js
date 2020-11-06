@@ -18,6 +18,7 @@ function App() {
             <Route path='/' component={Homescreen} exact />
             <Route path='/cart/:id?' component={Cart} exact />
             <Route path='/product/:id' component={Description} exact />
+            <Route path='/search/:keyword' component={Homescreen} />
           </Switch>
         </Container>
       </main>
