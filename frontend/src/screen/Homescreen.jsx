@@ -5,15 +5,17 @@ import Product from "../components/Product";
 import { listProducts } from "../actions/productActions";
 import "../index.css";
 
-function Homescreen() {
+function Homescreen({match}) {
+  const keyword = match.params.keyword
+
   const dispatch = useDispatch();
 
   const productsList = useSelector((state) => state.productsList);
   const { loading, error, products } = productsList;
 
   useEffect(() => {
-    dispatch(listProducts());
-  }, [dispatch]);
+    dispatch(listProducts(keyword));
+  }, [dispatch,keyword]);
 
   return (
     <div className='home'>
