@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { NavbarData } from "./NavbarData";
 import "./Navbar.css";
 import { IconContext } from "react-icons";
+import Search from './SearchBox';
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
@@ -21,7 +22,7 @@ function Navbar() {
           <Link to='/' className='redir'>
               VUGHA
             </Link>
-           
+           <Search/>
           </div>
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
           <ul className='nav-menu-items' onClick={showSidebar}>
