@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import { NavbarData } from "./NavbarData";
 import "./Navbar.css";
 import { IconContext } from "react-icons";
-import Search from './SearchBox';
+import SearchBox from './SearchBox';
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
@@ -22,7 +22,7 @@ function Navbar() {
           <Link to='/' className='redir'>
               VUGHA
             </Link>
-           <Search/>
+            <Route render={({history})=> <SearchBox history={history}/>}/>
           </div>
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
           <ul className='nav-menu-items' onClick={showSidebar}>

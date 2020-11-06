@@ -1,7 +1,7 @@
 import React from "react";
-import { Link,Route} from "react-router-dom";
+import { Link} from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import SearchBox from '../components/SearchBox'
+
 
 const Header = () => {
   return (
@@ -13,8 +13,6 @@ const Header = () => {
 
           <Navbar.Collapse id='basic-navbar-nav'>
 
-            <Route render={({history})=> <SearchBox history={history}/>}/>
-            
             <Nav className='ml-auto'>
               <Nav.Link>
                 <Link to='/'>Home</Link>

@@ -79,3 +79,11 @@
 span {
   margin-left: 16px;
 }
+
+.inp {
+  width: 35rem !important;
+  margin-left: 2rem;
+}
+.p-2 {
+  background-color: rgb(196, 216, 235) !important;
+}

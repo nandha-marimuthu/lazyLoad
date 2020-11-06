@@ -1,13 +1,15 @@
-import React, {useState} from 'react'
-import {Form,Button} from 'react-bootstrap'
+import React, {useState} from 'react';
+import {Form,Button} from 'react-bootstrap';
+import "./Navbar.css";
 
-function SearchBox(history) {
+const SearchBox = ({history}) => {
     const [keyword,setKeyword] = useState('')
     const submitHandler = (e) => {
-      e.prventDefault()
+      e.preventDefault()
       if(keyword.trim()){ 
         history.push(`/search/${keyword}`)
-      }else{
+      }
+      else{
         history.push('/')
       }
     }
@@ -20,7 +22,7 @@ function SearchBox(history) {
           name='q'
           onChange={(e) => setKeyword(e.target.value)}
           placeholder='Search products'
-          className='mr-sm-2 ml-sm-5'>
+          className='inp'>
           </Form.Control>
           <Button
             type='submit'
